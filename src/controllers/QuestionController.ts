@@ -43,7 +43,7 @@ class QuestionController {
     }
     async searchQuestionsWithAnswers(req: Request, res: Response) {
         const { userId, query } = req.query;
-
+        // object id should be passed
         try {
             const results = await Question.aggregate([
                 {

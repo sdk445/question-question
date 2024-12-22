@@ -14,7 +14,7 @@ const router = Router();
 //user router
 router.get("/signup", UserController.signup)
 router.get("/login", UserController.login)
-router.post("/update-user", UserController.editProfile)
+router.post("/update-user",authenticate, UserController.editProfile)
 
 //question router
 router.get("/categories", CategoryController.getCategoriesWithQuestionCount);
