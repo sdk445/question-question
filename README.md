@@ -18,3 +18,9 @@
  * View user profile
  * 8) User will be able to submit answers against respective questions.
  */
+
+## Bonus Task: Docker
+
+- To run the application with Docker, use the following command:
+  ```bash
+  sudo docker compose up --build
