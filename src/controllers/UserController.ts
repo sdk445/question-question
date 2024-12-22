@@ -62,6 +62,39 @@ class UserController {
       res.status(500).json({ error: error.message });
     }
   }
+  async editProfile(req: Request, res: Response) {
+    const { name, email, timezone } = req.body;
+    const userId = req.user.id; // Assuming `req.user` contains authenticated user info (from middleware)
+    let profilePicture;
+
+    if (req.file) {
+      profilePicture = `/uploads/${req.file.filename}`; // Assuming you're using a library like `multer` for file uploads
+    }
+
+    try {
+      const updatedFields: any = {};
+      if (name) updatedFields.name = name;
+      if (email) updatedFields.email = email;
+      if (timezone) updatedFields.timezone = timezone;
+      if (profilePicture) updatedFields.profilePicture = profilePicture;
+
+      const updatedUser = await User.findByIdAndUpdate(userId, updatedFields, {
+        new: true,
+      });
+
+      if (!updatedUser) {
+        res.status(404).json({ error: "User not found" });
+        return;
+      }
+
+      res.status(200).json({
+        message: "Profile updated successfully",
+        user: updatedUser,
+      });
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  }
 }
 
 export default new UserController();
