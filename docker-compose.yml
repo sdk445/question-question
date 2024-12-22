@@ -1,0 +1,29 @@
+services:
+  app:
+    build: .
+    container_name: question-app
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongo
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - MONGO_URI=mongodb://mongo-db:27017/local-db
+    networks:
+      - app-network
+  mongo:
+    image: mongo:latest
+    container_name: mongo-db
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - app-network
+volumes:
+  mongo_data:
+
+networks:
+  app-network:
+    driver: bridge
