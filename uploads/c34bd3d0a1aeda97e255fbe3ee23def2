@@ -1,0 +1,7 @@
+text,options,correctOption,categories
+"What is the capital of France?","Paris,London,Berlin,Madrid","Paris","Geography,Europe"
+"Who wrote 'Romeo and Juliet'?","Shakespeare,Dickens,Hemingway,Tolkien","Shakespeare","Literature"
+"What is 2 + 2?","3,4,5,6","4","Mathematics,Basics"
+"In OOP, what does 'encapsulation' mean?","Hiding data,Putting code in a capsule,Using private variables,Writing reusable code","Hiding data","Programming,OOP"
+"Why did the Java class break up with the C++ class?","Too many arguments,No inheritance,No polymorphism,Too abstract","Too many arguments","Programming,Memes"
+"In OOP, why do some developers say, 'We don't need polymorphism, we need switch cases'?","Polymorphism is overrated,Switch cases are simpler,Switch cases are faster,They don't understand OOP","They don't understand OOP","Programming"
