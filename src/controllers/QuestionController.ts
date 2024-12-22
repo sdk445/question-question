@@ -6,6 +6,7 @@ import fs from "fs";
 import bcrypt from 'bcrypt'
 import { Types } from "mongoose";
 class QuestionController {
+
     async getQuestionsByCategory(req: Request, res: Response) {
         const { categoryId } = req.query;
         const objectIdCategory = new Types.ObjectId(categoryId);
@@ -94,6 +95,7 @@ class QuestionController {
             res.status(500).json({ error: error.message });
         }
     }
+    //7) Add question in bulk against different category (using a CSV file import).
     async uploadQuestions(req: Request, res: Response) {
         const filePath = req.file?.path;
 
@@ -153,7 +155,9 @@ class QuestionController {
             res.status(500).json({ error: error.message });
         }
     }
-    // Helper function to compare the answer with the stored hashed value
+
+    //not needed if we dont project data 
+    // Helper function to compare the answer with the stored hashed value to make it more concise
     private async compareAnswer(questionId: string, providedAnswer: string): Promise<boolean> {
         try {
             const question = await Question.findById(questionId);
@@ -166,6 +170,7 @@ class QuestionController {
             throw new Error("Error comparing answer: " + error.message);
         }
     }
+    
 
 }
 

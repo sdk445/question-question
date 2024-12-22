@@ -9,13 +9,15 @@ import Question from "../models/QuestionModel";
  * ## not gonna repeat this through the app this is for demonstration only and i think its enough to serve the purpose
  */
 class CategoryController {
+
+  // All Categories  && List of questions for each category
   async getCategoriesWithQuestionCount(req: Request, res: Response) {
     try {
       const categories = await Category.aggregate([
         {
           $lookup: {
-            from: "questions", 
-            localField: "_id", 
+            from: "questions",
+            localField: "_id",
             foreignField: "categories",
             as: "questions",
           },
@@ -35,6 +37,7 @@ class CategoryController {
       res.status(500).json({ error: error.message });
     }
   }
+
 }
 
 export default new CategoryController();
